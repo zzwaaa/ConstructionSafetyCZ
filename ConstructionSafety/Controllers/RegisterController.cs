@@ -17,7 +17,6 @@ using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
 using ViewModels.ViewModels;
-using WisdomDbCore.WisdomModels;
 
 namespace ConstructionSafety.Controllers
 {
@@ -26,14 +25,14 @@ namespace ConstructionSafety.Controllers
     public class RegisterController : ControllerBase
     {
         private readonly ILogger<RegisterController> _logger;
-        private readonly WisdomPlatDBContext _context;
+        //private readonly WisdomPlatDBContext _context;
         private readonly ProjLiefInsDBContext _life;
         private JwtSettings settings;
 
-        public RegisterController(ILogger<RegisterController> logger,WisdomPlatDBContext context,ProjLiefInsDBContext projLief,IOptions<JwtSettings> options)
+        public RegisterController(ILogger<RegisterController> logger,/*WisdomPlatDBContext context,*/ProjLiefInsDBContext projLief,IOptions<JwtSettings> options)
         {
             _logger = logger;
-            _context = context;
+            //_context = context;
             settings = options.Value;
             _life = projLief;
         }

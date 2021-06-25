@@ -17,7 +17,6 @@ using System.Threading.Tasks;
 //using WisdomDbCore.WisdomModels;
 using Microsoft.EntityFrameworkCore;
 using Models.Models;
-using WisdomDbCore.WisdomModels;
 using Models.Caching;
 
 namespace ConstructionSafety
@@ -74,8 +73,8 @@ namespace ConstructionSafety
             //services.AddDbContext<InterfaceSysDBContext>(
             //    option => option.UseNpgsql(Configuration.GetConnectionString("InterfaceSysDBContext")));
             //ÖÇ»Û¼à¹ÜÊý¾Ý¿â
-            services.AddDbContext<WisdomPlatDBContext>(
-                option => option.UseNpgsql(Configuration.GetConnectionString("WisdomPlatDBContext")));
+            //services.AddDbContext<WisdomPlatDBContext>(
+            //    option => option.UseNpgsql(Configuration.GetConnectionString("WisdomPlatDBContext")));
 
             #endregion
 

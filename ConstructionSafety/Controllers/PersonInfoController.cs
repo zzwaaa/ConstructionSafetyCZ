@@ -14,7 +14,6 @@ using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using ViewModels.ViewModels;
-using WisdomDbCore.WisdomModels;
 //using WisdomDbCore.WisdomModels;
 
 namespace ConstructionSafety.Controllers
@@ -24,14 +23,14 @@ namespace ConstructionSafety.Controllers
     public class PersonInfoController : ControllerBase
     {
         private readonly ILogger<PersonInfoController> _logger;
-        private readonly WisdomPlatDBContext _context;
+        //private readonly WisdomPlatDBContext _context;
         private readonly ProjLiefInsDBContext _life;
         private OssFileSetting _ossFileSetting;
 
-        public PersonInfoController(IOptions<OssFileSetting> oss, ILogger<PersonInfoController> logger, WisdomPlatDBContext context,ProjLiefInsDBContext projLief) 
+        public PersonInfoController(IOptions<OssFileSetting> oss, ILogger<PersonInfoController> logger, /*WisdomPlatDBContext context,*/ProjLiefInsDBContext projLief) 
         {
             _logger = logger;
-            _context = context;
+            //_context = context;
             _life = projLief;
             _ossFileSetting = oss.Value;
         }
@@ -51,7 +50,7 @@ namespace ConstructionSafety.Controllers
                                .Where(s => s.PersonId == personId).FirstOrDefaultAsync();
                 if (projInfos==null)
                 {
-                    return ResponseViewModel<object>.Create(Status.ERROR, Message.ERROR, "您当前未绑定项目，暂无信息");
+                    return ResponseViewModel<object>.Create(Status.ERROR,"您当前未绑定项目，暂无信息");
                 }
                 var IntgralInfo = _life.IntegralInfos
                                .Where(p => p.PersonId == projInfos.PersonId)
@@ -602,7 +601,7 @@ namespace ConstructionSafety.Controllers
                     ImageName = "0"
                 };
                 await _life.Imagelist.AddRangeAsync(mModel);
-                _context.SaveChanges();
+                _life.SaveChanges();
                 return ResponseViewModel<string>.Create(Status.SUCCESS, Message.SUCCESS, "添加成功");
 
 

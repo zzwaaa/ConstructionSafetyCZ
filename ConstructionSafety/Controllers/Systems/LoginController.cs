@@ -16,7 +16,6 @@ using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
 using ViewModels.ViewModels;
-using WisdomDbCore.WisdomModels;
 
 namespace ConstructionSafety.Controllers.Systems
 {
@@ -25,14 +24,14 @@ namespace ConstructionSafety.Controllers.Systems
     public class LoginController : ControllerBase
     {
         private readonly ILogger<LoginController> _logger;
-        private readonly WisdomPlatDBContext _context;
+       // private readonly WisdomPlatDBContext _context;
         private JwtSettings settings;
         private readonly ProjLiefInsDBContext _life;
 
-        public LoginController(ILogger<LoginController> logger, WisdomPlatDBContext context,ProjLiefInsDBContext projLief,IOptions<JwtSettings> options)
+        public LoginController(ILogger<LoginController> logger,/* WisdomPlatDBContext context,*/ProjLiefInsDBContext projLief,IOptions<JwtSettings> options)
         {
             _logger = logger;
-            _context = context;
+            //_context = context;
             settings = options.Value;
             _life = projLief;
         }
